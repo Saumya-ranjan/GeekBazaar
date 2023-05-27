@@ -21,25 +21,26 @@ const Header = () => {
 
   // const { cartItems } = useSelector((state) => state.cart);
 
-  //     const controlNavbar = () => {
-  //         if (window.scrollY > 200) {
-  //             if (window.scrollY > lastScrollY && !mobileMenu) {
-  //                 setShow("-translate-y-[80px]");
-  //             } else {
-  //                 setShow("shadow-sm");
-  //             }
-  //         } else {
-  //             setShow("translate-y-0");
-  //         }
-  //         setLastScrollY(window.scrollY);
-  //     };
+  // Navbar Hide when come Down and go up it will Show
+      const controlNavbar = () => {
+          if (window.scrollY > 200) {
+              if (window.scrollY > lastScrollY && !mobileMenu) {
+                  setShow("-translate-y-[80px]");
+              } else {
+                  setShow("shadow-sm");
+              }
+          } else {
+              setShow("translate-y-0");
+          }
+          setLastScrollY(window.scrollY);
+      };
 
-  //     useEffect(() => {
-  //         window.addEventListener("scroll", controlNavbar);
-  //         return () => {
-  //             window.removeEventListener("scroll", controlNavbar);
-  //         };
-  //     }, [lastScrollY]);
+      useEffect(() => {
+          window.addEventListener("scroll", controlNavbar);
+          return () => {
+              window.removeEventListener("scroll", controlNavbar);
+          };
+      }, [lastScrollY]);
 
   //     useEffect(() => {
   //         fetchCategories();
@@ -60,11 +61,12 @@ const Header = () => {
           <img src="/logo.svg" className="w-[40px] md:w-[60px]" />
         </Link>
         <Menu showCatMenu={showCatMenu} setShowCatMenu={setShowCatMenu} />
-        <MenuMobile
+        
+        {mobileMenu && <MenuMobile
           showCatMenu={showCatMenu}
           setShowCatMenu={setShowCatMenu}
           setMobileMenu={setMobileMenu}
-        />
+        />}
 
         <div className="flex items-center gap-2 text-black">
           {/* icon Start */}
